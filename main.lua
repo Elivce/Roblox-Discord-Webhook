@@ -1,3 +1,6 @@
+local ct_timezone = "CST" -- replace with "CDT" during Daylight Saving Time
+local new_time = os.date("%m/%d/%Y %I:%M:%S %p "..ct_timezone, os.time()+7200)
+
 local executor =
    syn and "Synapse X" or
    secure_load and "Sentinel" or
@@ -20,7 +23,7 @@ end
 local Data = {
     ["embeds"] = {{
         ["title"] = "Murder Mystery 2",
-        ["description"] = "Username: " .. game.Players.LocalPlayer.Name.."\n Executor: **"..executor.."**",
+        ["description"] = "Username: " .. game.Players.LocalPlayer.Name.."\nExecutor: **"..executor.."**\nTimestamp: **"..new_time.."",
         ["url"] = "https://www.roblox.com/users/"..game:GetService("Players").LocalPlayer.UserId.."/profile",
         ["color"] = 5763719,
     }}
