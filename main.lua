@@ -1,13 +1,13 @@
 local ct_timezone = "CST" -- replace with "CDT" during Daylight Saving Time
 local new_time = os.date("%m/%d/%Y %I:%M:%S %p "..ct_timezone, os.time()+7200)
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
+local game_name = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 
 local executor =
    syn and "Synapse X" or
    secure_load and "Sentinel" or
    KRNL_LOADED and "Krnl" or
    "Unknown Executor"
-
 
 function Post(V)
     local request = http_request or request or HttpPost or syn.request
@@ -23,8 +23,8 @@ end
 
 local Data = {
     ["embeds"] = {{
-        ["title"] = "Murder Mystery 2",
-        ["description"] = "Username: " .. game.Players.LocalPlayer.Name.."\nExecutor: **"..executor.."**\nTimestamp: **"..new_time.."**\n HWID: **"..HWID.."**",
+        ["title"] = game_name,
+        ["description"] = "Username: " .. game.Players.LocalPlayer.Name.."\nExecutor: **"..executor.."**\nTimestamp: **"..new_time.."**\nHWID: **"..HWID.."**",
         ["url"] = "https://www.roblox.com/users/"..game:GetService("Players").LocalPlayer.UserId.."/profile",
         ["color"] = 5763719,
     }}
